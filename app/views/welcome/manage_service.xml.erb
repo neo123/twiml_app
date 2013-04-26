@@ -14,9 +14,9 @@
 <!-- If customer doesn't input anything, prompt and try again. -->
 <Say>Sorry, I didn't get your response.</Say>
 <% if !@customer_service.nil? %>
-<Gather action="/welcome/manage_service.xml?client_id=<%= xml_parser(@customer_service.customer_id) %>&amp;service_id=<%= xml_parser(@customer_service.service_id)%>" numDigits="1" method="GET">
+<Gather action="/welcome/manage_service.xml?client_id=<%= xml_parser(@customer_service.customer.client_id) %>&amp;service_id=<%= xml_parser(@customer_service.service_id)%>" numDigits="1" method="GET">
 <Say>Please Press 1 for try again.</Say>
-<Say>Plaese Press 2 for end call.</Say>
+<Say>Please Press 2 for end call.</Say>
 </Gather>
 <% else %>
 <Hangup/>

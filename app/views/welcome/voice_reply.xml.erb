@@ -12,14 +12,14 @@
 <Gather action="/welcome/handle_wrong_input.xml" numDigits="1" method="GET">
 <Say>Sorry, This is not valid client id.</Say>
 <Say>Please Press 1 for try again.</Say>
-<Say>Plaese Press 2 for end call.</Say>
+<Say>Please Press 2 for end call.</Say>
 </Gather>
 <% end %>
 <Say>Sorry, I didn't get your response.</Say>
 <% if !@customer.nil? %>
 <Gather action="/welcome/voice_reply.xml?client_id=<%= @customer.client_id%>" numDigits="1" method="GET">
 <Say>Please Press 1 for try again.</Say>
-<Say>Plaese Press 2 for end call.</Say>
+<Say>Please Press 2 for end call.</Say>
 </Gather>
 <% else %>
 <Hangup/>
