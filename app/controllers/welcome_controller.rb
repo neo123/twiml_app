@@ -16,7 +16,7 @@ class WelcomeController < ApplicationController
       client_id = params["Digits"]
     end
     @customer = Customer.find_by_client_id(client_id)
-  	@customer_services = @customer.customer_services.order("position asc")
+  	@customer_services = @customer.customer_services.order("position asc") if !@customer.nil?
     respond_to do |format|
       format.xml
     end
