@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+<% if @success == "true" %>
+<Redirect method='GET'>/welcome/voice.xml</Redirect>
+<% else %>
+<Say>Thank you for using Harmony Information Systems.</Say>
+<Hangup/>
+<% end %>
+</Response>

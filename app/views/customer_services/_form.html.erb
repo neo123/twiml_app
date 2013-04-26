@@ -1,0 +1,29 @@
+<%= form_for(@customer_service) do |f| %>
+  <% if @customer_service.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@customer_service.errors.count, "error") %> prohibited this customer_service from being saved:</h2>
+
+      <ul>
+      <% @customer_service.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= label_tag "Customer Name" %><br />
+    <%= f.select :customer_id, options_from_collection_for_select(@customers, "id", "name"), :prompt => "select customer" %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br />
+    <%= f.number_field :quantity %>
+  </div>
+  <div class="field">
+    <%= label_tag "Service Name" %><br />
+    <%= f.select :service_id, options_from_collection_for_select(@services, "id", "name"), :prompt => "select service" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

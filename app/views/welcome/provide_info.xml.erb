@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+<% if @check == "account_status"%>
+<Say>Your account is Valid account.</Say>
+<% else %>
+<Say>Your account balance is <%= @product_user.account_balance %>.</Say>
+<% end %>
+<!-- If customer doesn't input anything, prompt and try again. -->
+<Say>Thank you for using v2solutions.</Say>
+<Hangup/>
+</Response>

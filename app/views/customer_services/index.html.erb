@@ -1,0 +1,29 @@
+<h1>Listing customer_services</h1>
+
+<table>
+  <tr>
+    <th>position</th>
+    <th>Customer</th>
+    <th>Quantity</th>
+    <th>Service</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @customer_services.each do |customer_service| %>
+  <tr>
+    <td><%= customer_service.position %></td>
+    <td><%= customer_service.customer_id %></td>
+    <td><%= customer_service.quantity %></td>
+    <td><%= customer_service.service_id %></td>
+    <td><%= link_to 'Show', customer_service %></td>
+    <td><%= link_to 'Edit', edit_customer_service_path(customer_service) %></td>
+    <td><%= link_to 'Destroy', customer_service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Customer service', new_customer_service_path %>

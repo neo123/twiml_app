@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+<% if !@customer_service.nil? %>
+<Gather action="/welcome/place_order.xml?customer_id=<%= xml_parser(@customer_service.customer_id) %>&amp;service_id=<%= xml_parser(@customer_service.service_id)%>" numDigits=">=1" method="GET">
+<Say>Please enter quantity.</Say>
+</Gather>
+<% else %>
+<Gather action="/welcome/voice_reply.xml?client_id=<%= @customer.client_id%>" numDigits="1" method="GET">
+<Say>Please enter valid option.</Say>
+<Say>Press 1 for try again.</Say>
+</Gather>
+<% end %>
+<!-- If customer doesn't input anything, prompt and try again. -->
+<Say>Sorry, I didn't get your response.</Say>
+<Redirect method='GET'>/welcome/handle_wrong_input.xml?Digits=1</Redirect>
+</Response>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+<Gather action="/welcome/voice_reply.xml" numDigits=">=1" method="GET">
+<Say>Welcome to Harmony Information Systems.</Say>
+<Say>Kindly enter client id.</Say>
+</Gather>
+<!-- If customer doesn't input anything, prompt and try again. -->
+<Say>Sorry, I didn't get your response.</Say>
+<Redirect method='GET'>/welcome/handle_wrong_input.xml?Digits=1</Redirect>
+</Response>

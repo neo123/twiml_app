@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+<% if !@customer.nil? %>
+<Gather action="/welcome/manage_service.xml?client_id=<%= @customer.client_id%>" numDigits="1" method="GET">
+<Say>Welcome Mr. <%= @customer.name %>.</Say>
+<Say>Please select services.</Say>
+<% @customer_services.each do |customer_service|%>
+<Say>Press <%= customer_service.position %> for <%= customer_service.service.name %>.</Say>
+<% end %>
+</Gather>
+<% else %>
+<Gather action="/welcome/handle_wrong_input.xml" numDigits="1" method="GET">
+<Say>Sorry, This is not valid client id.</Say>
+<Say>Please Press 1 for try again.</Say>
+<Say>Plaese Press 2 for end call.</Say>
+</Gather>
+<% end %>
+<Say>Sorry, I didn't get your response.</Say>
+<Redirect method='GET'>/welcome/handle_wrong_input.xml?Digits=1</Redirect>
+</Response>
