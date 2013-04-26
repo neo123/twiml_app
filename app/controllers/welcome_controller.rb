@@ -23,9 +23,23 @@ class WelcomeController < ApplicationController
   end
 
   def manage_service
-    @customer = Customer.find_by_client_id(params["client_id"])
+    if params["try_again"] and params["try_again"] == "1"
+      client_id = params["client_id"]
+      service_id = params["service_id"]
+      case params["Digits"]
+      when "1"
+        @success = true
+      when "2"
+        @success = false
+      end
+    else
+      client_id = params["client_id"]
+      service_id = params["Digits"]
+      @success = true
+    end
+    @customer = Customer.find_by_client_id(client_id)
     ## TODO
-    @customer_service = @customer.customer_services.find_by_service_id(params["Digits"])
+    @customer_service = @customer.customer_services.find_by_service_id(service_id)
     respond_to do |format|
       format.xml
     end

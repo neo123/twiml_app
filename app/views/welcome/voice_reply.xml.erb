@@ -16,5 +16,12 @@
 </Gather>
 <% end %>
 <Say>Sorry, I didn't get your response.</Say>
-<Redirect method='GET'>/welcome/handle_wrong_input.xml?Digits=1</Redirect>
+<% if !@customer.nil? %>
+<Gather action="/welcome/voice_reply.xml?client_id=<%= @customer.client_id%>" numDigits="1" method="GET">
+<Say>Please Press 1 for try again.</Say>
+<Say>Plaese Press 2 for end call.</Say>
+</Gather>
+<% else %>
+<Hangup/>
+<% end %>
 </Response>
