@@ -13,7 +13,6 @@
 <% end %>
 <!-- If customer doesn't input anything, prompt and try again. -->
 <Say>Sorry, I didn't get your response.</Say>
-<Redirect method='GET'>/welcome/handle_wrong_input.xml?Digits=1</Redirect>
 <% if !@customer_service.nil? %>
 <Gather action="/welcome/manage_service.xml?client_id=<%= xml_parser(@customer_service.customer_id) %>&amp;service_id=<%= xml_parser(@customer_service.service_id)%>" numDigits="1" method="GET">
 <Say>Please Press 1 for try again.</Say>
